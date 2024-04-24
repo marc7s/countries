@@ -1,9 +1,13 @@
 # Geodl export
+> [!NOTE]
+> There is a GitHub action setup that will automatically export the Geodl data and update the repository.
+
+However, if you want to manually generate an export, you need to follow these steps:
 1. Install [PHP](https://www.php.net/downloads.php)
 2. Inside your `php.ini` file inside your PHP installation, uncomment the line `extension=gettext`
 3. Install [Composer](https://getcomposer.org/download/)
 4. Run `composer install`
-5. Run `php countries.php convert -i name -i area -i cca2 -i cca3 -i independent -i capital -i region -i latlng -i borders -i area --output-dir=geodl --format=csv`
+5. Run the command under the `Export Geodl data` step in the `geodl-export.yml` workflow to generate the export
 
 # World countries in JSON, CSV, XML and YAML.
 
