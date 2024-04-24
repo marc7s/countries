@@ -1,3 +1,10 @@
+# Geodl export
+1. Install [PHP](https://www.php.net/downloads.php)
+2. Inside your `php.ini` file inside your PHP installation, uncomment the line `extension=gettext`
+3. Install [Composer](https://getcomposer.org/download/)
+4. Run `composer install`
+5. Run `php countries.php convert -i name -i area -i cca2 -i cca3 -i independent -i capital -i region -i latlng -i borders -i area --output-dir=geodl --format=csv`
+
 # World countries in JSON, CSV, XML and YAML.
 
 [![License](https://img.shields.io/packagist/l/mledoze/countries.svg?style=flat)](https://opendatacommons.org/licenses/odbl/1.0/)
