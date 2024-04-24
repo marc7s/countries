@@ -1,0 +1,52 @@
+name: Geodl Export
+on:
+  push:
+    paths-ignore:
+      - "*.md"
+      - .gitignore
+      - index.cjs
+      - index.d.ts
+      - index.mjs
+
+jobs:
+  export-geodl-data:
+    name: Export Geodl data
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          extensions: dom, gettext
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Export Geodl data
+        run: php countries.php convert -i name -i area -i cca2 -i cca3 -i independent -i capital -i region -i latlng -i borders -i area --output-dir=geodl --format=csv
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Export Geodl data"
+          commit_user_name: "GeodlExportBot"
+          file_pattern: 'geodl/*'
