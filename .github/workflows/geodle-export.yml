@@ -1,4 +1,4 @@
-name: Geodl Export
+name: Geodle Export
 on:
   push:
     paths-ignore:
@@ -9,8 +9,8 @@ on:
       - index.mjs
 
 jobs:
-  export-geodl-data:
-    name: Export Geodl data
+  export-geodle-data:
+    name: Export Geodle data
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -41,12 +41,12 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-      - name: Export Geodl data
-        run: php countries.php convert -i name -i area -i cca2 -i cca3 -i independent -i capital -i region -i latlng -i borders -i area --output-dir=geodl --format=csv
+      - name: Export Geodle data
+        run: php countries.php convert -i name -i area -i cca2 -i cca3 -i independent -i capital -i region -i latlng -i borders -i area --output-dir=geodle --format=csv
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Export Geodl data"
-          commit_user_name: "GeodlExportBot"
-          file_pattern: 'geodl/*'
+          commit_message: "Export Geodle data"
+          commit_user_name: "GeodleExportBot"
+          file_pattern: 'geodle/*'
