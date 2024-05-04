@@ -1,13 +1,13 @@
-# Geodl export
+# Geodle export
 > [!NOTE]
-> There is a GitHub action setup that will automatically export the Geodl data and update the repository.
+> There is a GitHub action setup that will automatically export the Geodle data and update the repository.
 
 However, if you want to manually generate an export, you need to follow these steps:
 1. Install [PHP](https://www.php.net/downloads.php)
 2. Inside your `php.ini` file inside your PHP installation, uncomment the line `extension=gettext`
 3. Install [Composer](https://getcomposer.org/download/)
 4. Run `composer install`
-5. Run the command under the `Export Geodl data` step in the `geodl-export.yml` workflow to generate the export
+5. Run the command under the `Export Geodle data` step in the `geodle-export.yml` workflow to generate the export
 
 # World countries in JSON, CSV, XML and YAML.
 
