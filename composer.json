@@ -1,6 +1,6 @@
 {
   "name": "mledoze/countries",
-  "description": "List of world countries in JSON, CSV, XML and Yaml",
+  "description": "List of world countries in JSON, CSV, XML and YAML",
   "keywords": [
     "world",
     "countries",
@@ -23,13 +23,13 @@
     }
   ],
   "require": {
-    "ext-dom": "*",
-    "ext-gettext": "*",
     "php": ">=8.2",
     "symfony/console": "~5.4|~6.4|~7.0",
     "symfony/yaml": "~5.4|~6.4|~7.0"
   },
   "require-dev": {
+    "ext-dom": "*",
+    "ext-gettext": "*",
     "roave/security-advisories": "dev-latest"
   },
   "autoload": {
